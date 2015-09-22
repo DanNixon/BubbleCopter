@@ -1,5 +1,10 @@
+BubbleCopter
+============
+
+A quadcopter with a BubbleScope 360 degree camera
+
 Parts List
-==========
+----------
 
 -	2x Graupner Electric Propeller 10x5 CW ([eBay](http://www.ebay.co.uk/itm/Graupner-SJ-Elektro-Electric-Propeller-10-x-5-Counterclockwise-1326-10X5L/271293831332))
 -	2x Graupner Electric Propeller 10x5 CCW ([eBay](http://www.ebay.co.uk/itm/Graupner-SJ-Elektro-Electric-Propeller-10-x-5-1326-10X5-/271362704598))
