@@ -12,9 +12,9 @@ explode = 0;
 side_explode = 0;
 
 half_thick = material_thickness / 2;
-x = (internal_x / 2) + half_thick + explode + side_explode;
-y = (internal_y / 2) + half_thick + explode;
-z = (internal_z / 2) + half_thick + explode;
+x = (internal[0] / 2) + half_thick + explode + side_explode;
+y = (internal[1] / 2) + half_thick + explode;
+z = (internal[2] / 2) + half_thick + explode;
 
 color("red")
 {

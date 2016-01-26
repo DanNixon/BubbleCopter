@@ -1,9 +1,9 @@
-include <CAD-Library/parametric_enclosures/basic_bolt_jointed/basic_bolt_jointed.scad>;
+use <Suwako/BoltAndTabBox.scad>
 include <../config.scad>
 
 module BottomPanel()
 {
-  XYPanel2D();
+  XYPanel2D(box_config);
 }
 
 BottomPanel();
