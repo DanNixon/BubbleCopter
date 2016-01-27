@@ -3,7 +3,13 @@ include <../config.scad>
 
 module TopPanel()
 {
-  XYPanel2D(box_config);
+  difference()
+  {
+    XYPanel2D(box_config);
+
+    translate([-15, 24])
+      circle(d=15);
+  }
 }
 
 TopPanel();

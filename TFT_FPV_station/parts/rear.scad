@@ -7,7 +7,11 @@ module RearPanel()
   difference()
   {
     YZPanel2D(box_config);
+
     DisplayMountingHoles();
+
+    translate([0, 35])
+      RX();
   }
 }
 
