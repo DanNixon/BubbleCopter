@@ -5,6 +5,7 @@ use <parts/top.scad>
 use <parts/bottom.scad>
 use <parts/left.scad>
 use <parts/right.scad>
+use <parts/rx_retention_plate.scad>
 
 $fn = 16;
 
@@ -29,7 +30,7 @@ color("red")
 
 color("green")
 {
-  rotate([90, 0, 0])
+  rotate([90, 0, 180])
   {
     translate([0, 0, y])
       linear_extrude(height=material_thickness, center=true)
@@ -54,3 +55,8 @@ color("blue")
         RearPanel();
   }
 }
+
+rotate([90, 0, 90])
+  translate([0, 35, -20])
+    linear_extrude(height=material_thickness, center=true)
+      RXRetentionPlate();

@@ -11,7 +11,10 @@ module RearPanel()
     DisplayMountingHoles();
 
     translate([0, 35])
+    {
       RX();
+      RX_MountingHoles();
+    }
   }
 }
 

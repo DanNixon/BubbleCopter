@@ -18,5 +18,17 @@ module DisplayMountingHoles()
 module RX()
 {
   projection()
-    DXFImport(rx_dxf, subtraction_layers=["RX_Cutouts"]);
+    DXFImport(rx_dxf, subtraction_layers=["RX_Cutouts", "RX_Case"]);
+}
+
+module RX_MountingHoles()
+{
+  hole_diam = 3.5;
+
+  translate([-40,  20]) circle(d=hole_diam);
+  translate([-40, -20]) circle(d=hole_diam);
+  translate([ 40,  20]) circle(d=hole_diam);
+  translate([ 40, -20]) circle(d=hole_diam);
+  translate([ 15, -50]) circle(d=hole_diam);
+  translate([-15, -50]) circle(d=hole_diam);
 }
