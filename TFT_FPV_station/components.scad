@@ -1,6 +1,6 @@
 use <Suwako/DXFImport.scad>
 
-display_dxf = "/home/dan/projects/Kanako/Displays/eBay_7inch_TFT.dxf";
+display_dxf = "../Kanako/Displays/eBay_7inch_TFT.dxf";
 
 module DisplayCutout()
 {
