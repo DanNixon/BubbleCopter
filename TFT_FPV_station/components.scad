@@ -18,7 +18,7 @@ module DisplayMountingHoles()
 module RX()
 {
   projection()
-    DXFImport(rx_dxf, subtraction_layers=["RX_Cutouts", "RX_Case"]);
+    DXFImport(rx_dxf, subtraction_layers=["RX_Cutouts"]);
 }
 
 module RX_MountingHoles()
