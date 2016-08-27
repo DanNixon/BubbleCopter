@@ -2,7 +2,7 @@ include <../config.scad>;
 
 module Base()
 {
-  difference()
+  module Plate()
   {
     hull()
     {
@@ -13,10 +13,10 @@ module Base()
         d = half_dim[0] - BASE_FRONT_CORNER_RADIUS;
 
         translate([-d, 0])
-          circle(r=BASE_FRONT_CORNER_RADIUS);
+          circle(r = BASE_FRONT_CORNER_RADIUS);
 
         translate([d, 0])
-          circle(r=BASE_FRONT_CORNER_RADIUS);
+          circle(r = BASE_FRONT_CORNER_RADIUS);
       }
 
       translate([0, -half_dim[1] + BASE_REAR_CORNER_RADIUS])
@@ -24,15 +24,20 @@ module Base()
         d = half_dim[0] - BASE_REAR_CORNER_RADIUS;
 
         translate([-d, 0])
-          circle(r=BASE_REAR_CORNER_RADIUS);
+          circle(r = BASE_REAR_CORNER_RADIUS);
 
         translate([d, 0])
-          circle(r=BASE_REAR_CORNER_RADIUS);
+          circle(r = BASE_REAR_CORNER_RADIUS);
       }
     }
+  }
+
+  difference()
+  {
+    Plate();
 
     translate(LIFT_FAN_DUCT_POSITION)
-      circle(d=LIFT_FAN_DUCT_DIAM);
+      circle(d = LIFT_FAN_DUCT_DIAM);
   }
 }
 
