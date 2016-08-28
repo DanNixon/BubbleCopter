@@ -5,8 +5,8 @@ module LiftFanTopMount()
 {
   difference()
   {
-    circle(d = LIFT_FAN_DUCT_DIAM + 30);
-    FanDuctMount(LIFT_FAN_DUCT_DIAM);
+    circle(d = LIFT_FAN_DUCT_DIMENSIONS[0] + 30);
+    FanDuctMount(LIFT_FAN_DUCT_DIMENSIONS[0]);
   }
 }
 

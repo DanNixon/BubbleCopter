@@ -23,7 +23,7 @@ module RearFanMount()
     {
       hull()
       {
-        circle(d = THRUST_FAN_DUCT_DIAM + THRUST_FAN_DUCT_MOUNT_PADDING);
+        circle(d = THRUST_FAN_DUCT_DIMENSIONS[0] + THRUST_FAN_DUCT_MOUNT_PADDING);
         BottomEdge();
       }
 
@@ -39,7 +39,7 @@ module RearFanMount()
   difference()
   {
     Plate();
-    FanDuctMount(THRUST_FAN_DUCT_DIAM);
+    FanDuctMount(THRUST_FAN_DUCT_DIMENSIONS[0]);
   }
 }
 

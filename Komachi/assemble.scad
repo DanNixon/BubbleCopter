@@ -38,14 +38,23 @@ module ThrustFanMountAssembly()
 module RudderAssembly()
 {
   rudder_offset = RUDDER_SPACING / 2;
+  rudder_assy_offset = -(RUDDER_DIMENSIONS[0] + RUDDER_MOUNT_DIMENSIONS[1] - MATERIAL_THICKNESS) / 2;
 
-  for(x = [-rudder_offset, rudder_offset])
-    translate([x, 0, 0])
-      rotate([90, 0, 270])
-        ExtrudeAndColour("magenta")
-          Rudder();
+  translate([0, -HALF_MATERIAL_THICKNESS, 0])
+  {
+    for(z = [-RUDDER_MOUNT_OFFSET, RUDDER_MOUNT_OFFSET])
+      translate([0, 0, z])
+        rotate([0, 0, 180])
+          ExtrudeAndColour("orange")
+            RudderMount();
 
-  /* TODO */
+    translate([0, rudder_assy_offset, 0])
+      for(x = [-rudder_offset, rudder_offset])
+        translate([x, 0, 0])
+          rotate([90, 0, 270])
+            ExtrudeAndColour("magenta")
+              Rudder();
+  }
 }
 
 

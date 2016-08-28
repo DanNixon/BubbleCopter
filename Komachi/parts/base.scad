@@ -38,7 +38,7 @@ module Base()
     Plate();
 
     translate(LIFT_FAN_DUCT_POSITION)
-      FanDuctMount(LIFT_FAN_DUCT_DIAM);
+      FanDuctMount(LIFT_FAN_DUCT_DIMENSIONS[0]);
   }
 }
 
