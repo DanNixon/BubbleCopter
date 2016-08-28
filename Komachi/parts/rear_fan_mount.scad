@@ -1,4 +1,5 @@
 include <../config.scad>;
+include <../modules/fan_duct_mount.scad>;
 
 module RearFanMount()
 {
@@ -38,7 +39,7 @@ module RearFanMount()
   difference()
   {
     Plate();
-    circle(d = THRUST_FAN_DUCT_DIAM);
+    FanDuctMount(THRUST_FAN_DUCT_DIAM);
   }
 }
 

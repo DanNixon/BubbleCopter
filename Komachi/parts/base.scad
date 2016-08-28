@@ -1,4 +1,5 @@
 include <../config.scad>;
+include <../modules/fan_duct_mount.scad>;
 
 module Base()
 {
@@ -37,7 +38,7 @@ module Base()
     Plate();
 
     translate(LIFT_FAN_DUCT_POSITION)
-      circle(d = LIFT_FAN_DUCT_DIAM);
+      FanDuctMount(LIFT_FAN_DUCT_DIAM);
   }
 }
 
