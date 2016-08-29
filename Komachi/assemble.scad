@@ -8,7 +8,8 @@ use <parts/rear_thrust_fan_mount.scad>
 use <parts/thrust_fan_mount_brace.scad>
 use <parts/lift_fan_top_mount.scad>
 use <parts/rudder.scad>
-use <parts/rudder_mount.scad>
+use <parts/top_rudder_mount.scad>
+use <parts/bottom_rudder_mount.scad>
 
 
 module ExtrudeAndColour(c)
@@ -54,13 +55,21 @@ module RudderAssembly()
   rudder_offset = RUDDER_SPACING / 2;
   rudder_assy_offset = -(RUDDER_DIMENSIONS[0] + RUDDER_MOUNT_DIMENSIONS[1] - MATERIAL_THICKNESS) / 2;
 
+  module RudderMountPart(z)
+  {
+    translate([0, 0, z])
+      rotate([0, 0, 180])
+        ExtrudeAndColour("orange")
+          children();
+  }
+
   translate([0, -HALF_MATERIAL_THICKNESS, 0])
   {
-    for(z = [-RUDDER_MOUNT_OFFSET, RUDDER_MOUNT_OFFSET])
-      translate([0, 0, z])
-        rotate([0, 0, 180])
-          ExtrudeAndColour("orange")
-            RudderMount();
+    RudderMountPart(RUDDER_MOUNT_OFFSET)
+      TopRudderMount();
+
+    RudderMountPart(-RUDDER_MOUNT_OFFSET)
+      BottomRudderMount();
 
     translate([0, rudder_assy_offset, 0])
       for(x = [-rudder_offset, rudder_offset])
