@@ -31,4 +31,8 @@ module ThrustFanDuctMountPlate()
         BottomEdge();
     }
   }
+
+  for(x = THRUST_FAN_DUCT_MOUNT_TAB_POSITIONS)
+    translate([x, -THRUST_FAN_DUCT_HEIGHT - HALF_MATERIAL_THICKNESS + 0.1])
+      square([THRUST_FAN_DUCT_MOUNT_TAB_WIDTH, MATERIAL_THICKNESS], center = true);
 }
