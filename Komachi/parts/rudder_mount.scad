@@ -20,9 +20,22 @@ module RudderMount()
     }
   }
 
+  module MountingTabs()
+  {
+    offset = (RUDDER_MOUNT_DIMENSIONS[0] - RUDDER_MOUNT_TAB_WIDTH) / 2;
+
+    for(x = [-offset, offset])
+      translate([x, -HALF_MATERIAL_THICKNESS])
+        square([RUDDER_MOUNT_TAB_WIDTH, MATERIAL_THICKNESS], center=true);
+  }
+
   difference()
   {
-    Plate();
+    union()
+    {
+      Plate();
+      MountingTabs();
+    }
 
     offset = RUDDER_SPACING / 2;
     for(x = [-offset, offset])
