@@ -30,9 +30,9 @@ module ThrustFanMountAssembly()
     half_width = THRUST_FAN_DUCT_MOUNT_BRACE_SPACING / 2;
 
     for(x = [-half_width, half_width])
-      translate([x, 0, 0])
+      translate([x, 0, HALF_MATERIAL_THICKNESS])
         rotate([90, 0, 90])
-          ExtrudeAndColour("green")
+          ExtrudeAndColour("pink")
             ThrustFanMountBrace();
   }
 }

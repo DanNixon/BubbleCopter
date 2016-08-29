@@ -16,23 +16,40 @@ module ThrustFanDuctMountPlate()
     }
   }
 
-  intersection()
+  module Plate()
   {
-    hull()
+    intersection()
     {
-      circle(d = THRUST_FAN_DUCT_DIMENSIONS[0] + THRUST_FAN_DUCT_MOUNT_PADDING);
-      BottomEdge();
+      hull()
+      {
+        circle(d = THRUST_FAN_DUCT_DIMENSIONS[0] + THRUST_FAN_DUCT_MOUNT_PADDING);
+        BottomEdge();
+      }
+
+      hull()
+      {
+        BottomEdge();
+        translate([0, THRUST_FAN_DUCT_HEIGHT * 5])
+          BottomEdge();
+      }
     }
 
-    hull()
-    {
-      BottomEdge();
-      translate([0, THRUST_FAN_DUCT_HEIGHT * 5])
-        BottomEdge();
-    }
+    for(x = THRUST_FAN_DUCT_MOUNT_TAB_POSITIONS)
+      translate([x, -THRUST_FAN_DUCT_HEIGHT - HALF_MATERIAL_THICKNESS + 0.1])
+        square([THRUST_FAN_DUCT_MOUNT_TAB_WIDTH, MATERIAL_THICKNESS], center = true);
   }
 
-  for(x = THRUST_FAN_DUCT_MOUNT_TAB_POSITIONS)
-    translate([x, -THRUST_FAN_DUCT_HEIGHT - HALF_MATERIAL_THICKNESS + 0.1])
-      square([THRUST_FAN_DUCT_MOUNT_TAB_WIDTH, MATERIAL_THICKNESS], center = true);
+  module BraceAssemlyTabs()
+  {
+    half_width = THRUST_FAN_DUCT_MOUNT_BRACE_SPACING / 2;
+    for(x = [-half_width, half_width])
+      translate([x, -THRUST_FAN_DUCT_HEIGHT + THRUST_FAN_DUCT_MOUNT_BRACE_TOP_TAB_POS])
+        square([MATERIAL_THICKNESS + MACHINE_TOLERANCE, THRUST_FAN_DUCT_MOUNT_BRACE_TOP_TAB_WIDTH], center = true);
+  }
+
+  difference()
+  {
+    Plate();
+    BraceAssemlyTabs();
+  }
 }
