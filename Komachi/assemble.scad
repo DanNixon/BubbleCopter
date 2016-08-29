@@ -1,9 +1,10 @@
 include <config.scad>;
 
+use <modules/fan_mount_spacer.scad>;
+
 use <parts/base.scad>
 use <parts/rear_fan_mount.scad>
 use <parts/rear_fan_mount_brace.scad>
-use <parts/rear_fan_mount_spacer.scad>
 use <parts/lift_fan_top_mount.scad>
 use <parts/rudder.scad>
 use <parts/rudder_mount.scad>
@@ -36,6 +37,18 @@ module ThrustFanMountAssembly()
   }
 }
 
+module FanMountSpacerAssembly(duct_diam, sep_len, sep_width)
+{
+  offset = (duct_diam + sep_width) / 2;
+
+  translate([0, -(sep_len + MATERIAL_THICKNESS) / 2, 0])
+    for(a = [0 : 90 : 360])
+      rotate([0, a, 0])
+        translate([offset, 0, 0])
+          ExtrudeAndColour("limegreen")
+            FanMountSpacer(sep_len, sep_width);
+}
+
 module RudderAssembly()
 {
   rudder_offset = RUDDER_SPACING / 2;
@@ -63,7 +76,11 @@ ExtrudeAndColour("blue")
   Base();
 
 translate(LIFT_FAN_DUCT_POSITION)
-  translate([0, 0, LIFT_FAN_DUCT_MOUNT_SPACING])
+  rotate([270, 0, 0])
+    FanMountSpacerAssembly(LIFT_FAN_DUCT_DIMENSIONS[0], LIFT_FAN_DUCT_MOUNT_SPACING, LIFT_FAN_DUCT_MOUNT_SEP_WIDTH);
+
+translate(LIFT_FAN_DUCT_POSITION)
+  translate([0, 0, LIFT_FAN_DUCT_MOUNT_SPACING + MATERIAL_THICKNESS])
     ExtrudeAndColour("cyan")
       LiftFanTopMount();
 
@@ -71,14 +88,8 @@ translate(THRUST_FAN_DUCT_MOUNT_POSITION)
 {
   ThrustFanMountAssembly();
 
-  /* TODO */
-  dx = (THRUST_FAN_DUCT_DIMENSIONS[0] + THRUST_FAN_DUCT_MOUNT_SEP_WIDTH) / 2;
-  translate([0, -(THRUST_FAN_DUCT_MOUNT_SPACING + MATERIAL_THICKNESS) / 2, THRUST_FAN_DUCT_HEIGHT + HALF_MATERIAL_THICKNESS])
-    for(a = [0 : 90 : 360])
-      rotate([0, a, 0])
-        translate([dx, 0, 0])
-          ExtrudeAndColour("limegreen")
-            RearFanMountSpacer();
+  translate([0, 0, THRUST_FAN_DUCT_HEIGHT + HALF_MATERIAL_THICKNESS])
+    FanMountSpacerAssembly(THRUST_FAN_DUCT_DIMENSIONS[0], THRUST_FAN_DUCT_MOUNT_SPACING, THRUST_FAN_DUCT_MOUNT_SEP_WIDTH);
 
   translate([0, -(THRUST_FAN_DUCT_MOUNT_SPACING + MATERIAL_THICKNESS), 0])
   {

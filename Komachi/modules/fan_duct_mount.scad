@@ -1,12 +1,10 @@
-module FanDuctMount(duct_diam)
+module FanDuctMount(duct_diam, sep_width)
 {
-  duct_rad = duct_diam / 2;
-
   circle(d = duct_diam);
 
-  /* TODO */
+  offset = (duct_diam + sep_width) / 2;
   for(a = [0: 90: 360])
     rotate([0, 0, a])
-      translate([0, duct_rad + 10])
-        square([MATERIAL_THICKNESS + MACHINE_TOLERANCE, 5], center=true);
+      translate([0, offset])
+        square([MATERIAL_THICKNESS + MACHINE_TOLERANCE, sep_width * SPACER_TAB_WIDTH_FACTOR + MACHINE_TOLERANCE], center=true);
 }

@@ -38,7 +38,7 @@ module Base()
     Plate();
 
     translate(LIFT_FAN_DUCT_POSITION)
-      FanDuctMount(LIFT_FAN_DUCT_DIMENSIONS[0]);
+      FanDuctMount(LIFT_FAN_DUCT_DIMENSIONS[0], LIFT_FAN_DUCT_MOUNT_SEP_WIDTH);
   }
 }
 

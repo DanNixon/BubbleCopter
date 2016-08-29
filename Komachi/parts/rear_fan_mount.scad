@@ -39,7 +39,7 @@ module RearFanMount()
   difference()
   {
     Plate();
-    FanDuctMount(THRUST_FAN_DUCT_DIMENSIONS[0]);
+    FanDuctMount(THRUST_FAN_DUCT_DIMENSIONS[0], THRUST_FAN_DUCT_MOUNT_SEP_WIDTH);
   }
 }
 
