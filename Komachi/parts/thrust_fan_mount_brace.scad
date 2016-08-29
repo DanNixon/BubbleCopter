@@ -1,6 +1,6 @@
 include <../config.scad>;
 
-module RearFanMountBrace()
+module ThrustFanMountBrace()
 {
   module Plate()
   {
@@ -19,4 +19,4 @@ module RearFanMountBrace()
   Plate();
 }
 
-RearFanMountBrace();
+ThrustFanMountBrace();

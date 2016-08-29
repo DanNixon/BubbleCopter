@@ -1,7 +1,7 @@
 include <../config.scad>;
 include <../modules/fan_duct_mount.scad>;
 
-module RearFanMount()
+module FrontThrustFanMount()
 {
   module Plate()
   {
@@ -43,4 +43,4 @@ module RearFanMount()
   }
 }
 
-RearFanMount();
+FrontThrustFanMount();
