@@ -1,5 +1,5 @@
 include <../config.scad>;
-include <../modules/fan_duct_mount.scad>;
+use <../modules/fan_duct_mount.scad>;
 
 module LiftFanTopMount()
 {

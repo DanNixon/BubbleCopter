@@ -1,5 +1,5 @@
 include <../config.scad>;
-include <../modules/fan_mount_spacer.scad>;
+use <../modules/fan_mount_spacer.scad>;
 
 module LiftFanMountSpacer()
 {

@@ -1,3 +1,5 @@
+include <../config.scad>;
+
 module FanDuctMount(duct_diam, sep_width)
 {
   circle(d = duct_diam);
