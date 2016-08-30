@@ -1,38 +1,10 @@
 include <../config.scad>;
 use <../modules/fan_duct_mount.scad>;
+use <../modules/base_plate.scad>;
+use <../modules/skirt_clamp_assembly_holes.scad>;
 
 module Base()
 {
-  module Plate()
-  {
-    hull()
-    {
-      half_dim = BASE_DIMENSIONS / 2;
-
-      translate([0, half_dim[1] - BASE_FRONT_CORNER_RADIUS])
-      {
-        d = half_dim[0] - BASE_FRONT_CORNER_RADIUS;
-
-        translate([-d, 0])
-          circle(r = BASE_FRONT_CORNER_RADIUS);
-
-        translate([d, 0])
-          circle(r = BASE_FRONT_CORNER_RADIUS);
-      }
-
-      translate([0, -half_dim[1] + BASE_REAR_CORNER_RADIUS])
-      {
-        d = half_dim[0] - BASE_REAR_CORNER_RADIUS;
-
-        translate([-d, 0])
-          circle(r = BASE_REAR_CORNER_RADIUS);
-
-        translate([d, 0])
-          circle(r = BASE_REAR_CORNER_RADIUS);
-      }
-    }
-  }
-
   module ThrustFanAssemblyTabs(y)
   {
     for(x = THRUST_FAN_DUCT_MOUNT_TAB_POSITIONS)
@@ -51,15 +23,21 @@ module Base()
 
   difference()
   {
-    Plate();
+    BasePlate();
 
-    translate(LIFT_FAN_DUCT_POSITION)
-      FanDuctMount(LIFT_FAN_DUCT_DIMENSIONS[0], LIFT_FAN_DUCT_MOUNT_SEP_WIDTH);
-
-    for(y = [THRUST_FAN_DUCT_MOUNT_POSITION[1], THRUST_FAN_DUCT_MOUNT_POSITION[1] - THRUST_FAN_DUCT_MOUNT_SPACING - MATERIAL_THICKNESS])
+    union()
     {
-      ThrustFanAssemblyTabs(y);
-      BraceAssemlyTabs(y);
+      SkirtClampAssemblyHoles();
+      SkirtClampAssemblyHoles(LOWER_SKIRT_MOUNT_SCALE);
+
+      translate(LIFT_FAN_DUCT_POSITION)
+        FanDuctMount(LIFT_FAN_DUCT_DIMENSIONS[0], LIFT_FAN_DUCT_MOUNT_SEP_WIDTH);
+
+      for(y = [THRUST_FAN_DUCT_MOUNT_POSITION[1], THRUST_FAN_DUCT_MOUNT_POSITION[1] - THRUST_FAN_DUCT_MOUNT_SPACING - MATERIAL_THICKNESS])
+      {
+        ThrustFanAssemblyTabs(y);
+        BraceAssemlyTabs(y);
+      }
     }
   }
 }

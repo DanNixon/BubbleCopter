@@ -3,6 +3,9 @@ include <config.scad>;
 use <modules/fan_mount_spacer.scad>;
 
 use <parts/base.scad>
+use <parts/base_skirt_clamp.scad>
+use <parts/lower_skirt_mount.scad>;
+use <parts/lower_skirt_mount_clamp.scad>;
 use <parts/front_thrust_fan_mount.scad>
 use <parts/rear_thrust_fan_mount.scad>
 use <parts/thrust_fan_mount_brace.scad>
@@ -83,6 +86,20 @@ module RudderAssembly()
 
 ExtrudeAndColour("blue")
   Base();
+
+translate([0, 0, MATERIAL_THICKNESS + 1])
+  ExtrudeAndColour("magenta")
+    BaseSkirtClamp();
+
+translate([0, 0, -15])
+{
+  ExtrudeAndColour("steelblue")
+    LowerSkirtMount();
+
+  translate([0, 0, MATERIAL_THICKNESS + 1])
+    ExtrudeAndColour("magenta")
+      LowerSkirtMountClamp();
+}
 
 translate(LIFT_FAN_DUCT_POSITION)
   rotate([270, 0, 0])
