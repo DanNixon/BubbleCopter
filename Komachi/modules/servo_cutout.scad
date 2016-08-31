@@ -1,7 +1,7 @@
 /* For Tower Pro 9g servos */
 
-function ServoCutoutSize() = [11.8, 22.2];
-function ServoHoleDiameter() = 3;
+function ServoCutoutSize() = [13.1, 23.1];
+function ServoHoleDiameter() = 2;
 
 module ServoCutout()
 {
