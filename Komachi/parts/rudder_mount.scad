@@ -32,14 +32,7 @@ module RudderMount(servo_mount = false)
   {
     union()
     {
-      hull()
-      {
-        Plate();
-
-        if(servo_mount)
-          translate(RUDDER_MOUNT_SERVO_POSITION + [0, ServoCutoutSize()[0]])
-            circle(d = ServoCutoutSize()[0]);
-      }
+      Plate();
 
       MountingTabs();
     }
@@ -48,9 +41,7 @@ module RudderMount(servo_mount = false)
     for(x = [-offset, offset])
       translate([x, (RUDDER_MOUNT_DIMENSIONS[1] / 2)])
         circle(d = sqrt(2 * pow(MATERIAL_THICKNESS, 2)) + MACHINE_TOLERANCE, $fs = 0.1, $fa = 2);
-
-    if(servo_mount)
-      translate(RUDDER_MOUNT_SERVO_POSITION)
-        ServoCutout(); 
   }
 }
+
+RudderMount();
