@@ -1,11 +1,11 @@
 MOTOR_DIST_X = 37.5;
 MOTOR_DIST_Y = 37.5;
-MOTOR_DIAMETER = 6.9;
+MOTOR_DIAMETER = 8.5;
 
 WIRING_HOLE_OFFSET = 0.7;
 WIRING_HOLE_DIAMETER = 2;
 
-ARM_WIDTH = 11;
+ARM_WIDTH = 13.5;
 PLATE_DIMENSIONS = [30, 45];
 
 ZIP_TIE_HOLE_OFFSETS = [0.15, 0.4, 0.6, 0.85];
@@ -94,6 +94,10 @@ module MotorRetentionClips()
 
 
 $fs = 2;
+
 MainPlate();
-translate([0, (PLATE_DIMENSIONS[1] / 2) + 10])
-  MotorRetentionClips();
+
+for(a = [0 : 90 : 360])
+  rotate([0, 0, a])
+    translate([0, (max(PLATE_DIMENSIONS) / 2) + ARM_WIDTH])
+      MotorRetentionClips();
