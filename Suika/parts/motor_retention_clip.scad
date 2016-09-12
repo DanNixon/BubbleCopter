@@ -5,7 +5,7 @@ module MotorRetentionClip()
   difference()
   {
     circle(d=ARM_WIDTH);
-    circle(d=MOTOR_DIAMETER);
+    circle(d=MOTOR_DIMENSIONS[0]);
   }
 }
 
