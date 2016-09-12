@@ -11,9 +11,8 @@ FC_POSITION = [0, 0];
 FC_RETENTION_OFFSET = [0, -4];
 
 /* Motors */
-/* TODO: check dimensions */
-PROP_DIAMETER = 60;
-MOTOR_DIMENSIONS = [8.5, 22]; // [diameter, length]
+PROP_DIAMETER = 55;
+MOTOR_DIMENSIONS = [8.5, 20]; // [diameter, length]
 
 MOTOR_DIST_X = 37.5;
 MOTOR_DIST_Y = 37.5;
