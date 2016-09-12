@@ -5,6 +5,7 @@ use <Suwako/parts/EachineEF01_FPVCamera.scad>;
 use <parts/frame_base.scad>;
 use <parts/motor_retention_clip.scad>;
 use <parts/fpv_camera_mount.scad>;
+use <parts/fpv_camera_mount_plate.scad>;
 
 module ExtrudeAndColour(c)
 {
@@ -39,8 +40,9 @@ module Motor()
 
 module FPVCamera()
 {
-  rotate([0, -90, -90])
-    EachineEF01_FPVCamera();
+  translate([0, 2, 0])
+    rotate([0, -90, -90])
+      EachineEF01_FPVCamera();
 }
 
 
@@ -59,11 +61,19 @@ translate(FPV_CAMERA_POSITON)
     FPVCamera();
 
 /* FPV camera mounts */
-for(x=[-CAMERA_BRACKET_SPACING / 2, CAMERA_BRACKET_SPACING / 2])
+dx = (CAMERA_BRACKET_SPACING + MATERIAL_THICKNESS) / 2;
+for(x=[-dx, dx])
   translate([x, 0, HALF_MATERIAL_THICKNESS])
     rotate([90, 0, -90])
       ExtrudeAndColour("red")
         FPVCameraMount();
+
+/* FPV camera mounting back plate */
+translate(FPV_CAMERA_POSITON)
+  rotate([90 + FPV_CAMERA_ANGLE, 0, 0])
+    translate([0, 0, CAMERA_BRACKET_PANEL_OFFSET])
+      ExtrudeAndColour("purple")
+        FPVCameraMountPlate();
 
 /* Motors and retention mounts */
 for(p=MOTOR_POSITIONS)
