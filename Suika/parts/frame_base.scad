@@ -49,7 +49,13 @@ module FrameBase()
 
   module FPVCameraMountHoles()
   {
-    /* TODO */
+    dx = CAMERA_BRACKET_SPACING / 2;
+    dy = CAMERA_BRACKET_TAB_OFFSET + (CAMERA_BRACKET_TAB_WIDTH / 2);
+
+    for(x = [-dx, dx])
+      for(y = [-dy, dy])
+        translate([x, y])
+          square([MATERIAL_THICKNESS + MACHINE_TOLERANCE, CAMERA_BRACKET_TAB_WIDTH + MACHINE_TOLERANCE], center=true);
   }
 
   difference()
