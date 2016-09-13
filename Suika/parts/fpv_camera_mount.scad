@@ -32,7 +32,8 @@ module FPVCameraMount()
   {
     union()
     {
-      polygon(points=bracket_points, paths=[[0, 1, 2, 3, 4, 9, 10, 11, 12, 13]]);
+      translate([0, 0.01])
+        polygon(points=bracket_points, paths=[[0, 1, 2, 3, 10, 11, 12, 13]]);
 
       minkowski()
       {
