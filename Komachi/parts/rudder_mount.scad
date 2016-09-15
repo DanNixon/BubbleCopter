@@ -25,7 +25,7 @@ module RudderMount(servo_mount = false)
   {
     for(x = [-RUDDER_MOUNT_TAB_OFFSET, RUDDER_MOUNT_TAB_OFFSET])
       translate([x, -HALF_MATERIAL_THICKNESS])
-        square([RUDDER_MOUNT_TAB_WIDTH, MATERIAL_THICKNESS], center=true);
+        square([RUDDER_MOUNT_TAB_WIDTH, RUDDER_MOUNT_TAB_LENGTH], center=true);
   }
 
   difference()

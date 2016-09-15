@@ -22,7 +22,7 @@ module Rudder()
     RudderMain();
 
     translate(RUDDER_ARM_HOLE_POSITION)
-      #circle(d = RUDDER_ARM_HOLE_POSITION);
+      circle(d = RUDDER_ARM_HOLE_POSITION);
   }
 }
 
