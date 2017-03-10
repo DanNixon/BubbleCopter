@@ -1,8 +1,18 @@
 # Komachi
 
-Basic hovercraft.
+Hovercraft with ducted fans.
 
-Parts:
-  - [Lift fan](http://www.hobbyking.com/hobbyking/store/uh_viewitem.asp?idproduct=44380)
-  - [Thrust fan](http://www.hobbyking.com/hobbyking/store/__4238__EDF_Ducted_Fan_Unit_6_Blade_2_56inch_66mm.html)
-    (ideally I would use the same as the lift fan, I just had one of these spare)
+## Laser settings
+
+(for a JustAddSharks 60W Greyfin)
+
+4.5mm foam board - Cut:
+- Feed rate: 25mms-1
+- Power: 22%
+- Corner power: 18%
+
+3mm Acrylic - Cut:
+- Feed rate: 10mms-1
+- Power: 66%
+- Corner power: 55%
+
