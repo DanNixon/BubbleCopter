@@ -1,6 +1,7 @@
 include <config.scad>;
 
 use <modules/fan_mount_spacer.scad>;
+use <modules/skirt_clamp_tab_cutouts.scad>;
 
 use <parts/base.scad>
 use <parts/base_skirt_clamp.scad>
@@ -8,17 +9,18 @@ use <parts/lower_skirt_mount.scad>;
 use <parts/lower_skirt_mount_clamp.scad>;
 use <parts/front_thrust_fan_mount.scad>
 use <parts/rear_thrust_fan_mount.scad>
-use <parts/thrust_fan_mount_brace.scad>
 use <parts/lift_fan_top_mount.scad>
 use <parts/rudder.scad>
 use <parts/rudder_mount.scad>
+use <parts/skirt_tab.scad>;
+use <parts/thrust_fan_mount_brace.scad>
 
 
 module ExtrudeAndColour(c, h = MATERIAL_THICKNESS)
 {
   color(c)
     linear_extrude(height = h, center = true)
-      children();
+    children();
 }
 
 module ThrustFanMountAssembly()
@@ -78,18 +80,26 @@ module RudderAssembly()
 ExtrudeAndColour("blue")
   Base();
 
-translate([0, 0, MATERIAL_THICKNESS + 1])
-  ExtrudeAndColour("magenta")
-    BaseSkirtClamp();
+if(SKIRT_CLAMP)
+  translate([0, 0, MATERIAL_THICKNESS + 1])
+    ExtrudeAndColour("magenta")
+      BaseSkirtClamp();
 
-translate([0, 0, -15])
+SkirtClampTabCutoutsTranslation(LOWER_SKIRT_MOUNT_SCALE)
+  translate([0, 0, -(LOWER_SKIRT_MOUNT_SPACING + MATERIAL_THICKNESS) / 2])
+    rotate([90, 0, 90])
+      ExtrudeAndColour("limegreen")
+        SkirtTab();
+
+translate([0, 0, -LOWER_SKIRT_MOUNT_SPACING - MATERIAL_THICKNESS])
 {
   ExtrudeAndColour("steelblue")
     LowerSkirtMount();
 
-  translate([0, 0, MATERIAL_THICKNESS + 1])
-    ExtrudeAndColour("magenta")
-      LowerSkirtMountClamp();
+  if(SKIRT_CLAMP)
+    translate([0, 0, MATERIAL_THICKNESS + 1])
+      ExtrudeAndColour("magenta")
+        LowerSkirtMountClamp();
 }
 
 translate(LIFT_FAN_DUCT_POSITION)

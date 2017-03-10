@@ -2,6 +2,7 @@ include <../config.scad>;
 use <../modules/fan_duct_mount.scad>;
 use <../modules/base_plate.scad>;
 use <../modules/skirt_clamp_assembly_holes.scad>;
+use <../modules/skirt_clamp_tab_cutouts.scad>;
 
 module Base()
 {
@@ -29,6 +30,7 @@ module Base()
     {
       SkirtClampAssemblyHoles();
       SkirtClampAssemblyHoles(LOWER_SKIRT_MOUNT_SCALE);
+      SkirtClampTabCutouts(LOWER_SKIRT_MOUNT_SCALE);
 
       translate(LIFT_FAN_DUCT_POSITION)
         FanDuctMount(LIFT_FAN_DUCT_DIMENSIONS[0], LIFT_FAN_DUCT_MOUNT_SEP_WIDTH);
