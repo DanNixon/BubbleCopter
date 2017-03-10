@@ -15,7 +15,7 @@ module LowerSkirtMount()
       SkirtClampAssemblyHoles(LOWER_SKIRT_MOUNT_SCALE);
 
       translate([0, -5])
-        Honeycomb(size=[45, 80], cell_size = 8, wall_thickness = 4, center = true);
+        Honeycomb(size=[45, 80], cell_size = 4, wall_thickness = 8, center = true);
     }
   }
 }

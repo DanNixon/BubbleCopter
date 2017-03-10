@@ -15,7 +15,7 @@ module RearThrustFanMount()
       for(x = [-RUDDER_MOUNT_TAB_OFFSET, RUDDER_MOUNT_TAB_OFFSET])
         for(y = [-RUDDER_MOUNT_OFFSET, RUDDER_MOUNT_OFFSET])
           translate([x, y])
-            square([RUDDER_MOUNT_TAB_WIDTH + MACHINE_TOLERANCE, MATERIAL_THICKNESS + MACHINE_TOLERANCE], center = true);
+            square([RUDDER_MOUNT_TAB_WIDTH + MACHINE_TOLERANCE, RUDDER_MATERIAL_THICKNESS + MACHINE_TOLERANCE], center = true);
     }
   }
 }

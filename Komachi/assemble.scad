@@ -14,10 +14,10 @@ use <parts/rudder.scad>
 use <parts/rudder_mount.scad>
 
 
-module ExtrudeAndColour(c)
+module ExtrudeAndColour(c, h = MATERIAL_THICKNESS)
 {
   color(c)
-    linear_extrude(height = MATERIAL_THICKNESS, center = true)
+    linear_extrude(height = h, center = true)
       children();
 }
 
@@ -62,14 +62,14 @@ module RudderAssembly()
     for(z = [-RUDDER_MOUNT_OFFSET, RUDDER_MOUNT_OFFSET])
       translate([0, 0, z])
         rotate([0, 0, 180])
-          ExtrudeAndColour("orange")
+          ExtrudeAndColour("orange", RUDDER_MATERIAL_THICKNESS)
             RudderMount();
 
     translate([0, rudder_assy_offset, 0])
       for(x = [-rudder_offset, rudder_offset])
         translate([x, 0, 0])
           rotate([90, 0, 270])
-            ExtrudeAndColour("magenta")
+            ExtrudeAndColour("magenta", RUDDER_MATERIAL_THICKNESS)
               Rudder();
   }
 }

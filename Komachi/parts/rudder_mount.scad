@@ -40,7 +40,7 @@ module RudderMount(servo_mount = false)
     offset = RUDDER_SPACING / 2;
     for(x = [-offset, offset])
       translate([x, (RUDDER_MOUNT_DIMENSIONS[1] / 2)])
-        circle(d = sqrt(2 * pow(MATERIAL_THICKNESS, 2)) + MACHINE_TOLERANCE, $fs = 0.1, $fa = 2);
+        circle(d = sqrt(2 * pow(RUDDER_MATERIAL_THICKNESS, 2)) + MACHINE_TOLERANCE, $fs = 0.1, $fa = 2);
   }
 }
 

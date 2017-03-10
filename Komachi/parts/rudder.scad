@@ -13,7 +13,7 @@ module Rudder()
     translate([-((RUDDER_DIMENSIONS[0] - MATERIAL_THICKNESS) / 2), 0])
     {
       pin_height = RUDDER_DIMENSIONS[1] + (RUDDER_PIVOT_LENGTH * 2);
-      square([MATERIAL_THICKNESS, pin_height], center = true);
+      square([RUDDER_MATERIAL_THICKNESS, pin_height], center = true);
     }
   }
 
